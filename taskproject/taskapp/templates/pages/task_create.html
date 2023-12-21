@@ -1,0 +1,18 @@
+{% extends "common.html" %}
+
+{% block content %}
+    <form method="post" action="{% url "taskapp:create-task" %}">
+        <div class="row">
+            <div class="col-12">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">추가하기</button>
+            </div>
+        </div>
+    </form>
+    <script>
+        window.onload = function () {
+            flatpickr("input[name='due']", {enableTime: true});
+        }
+    </script>
+{% endblock %}
